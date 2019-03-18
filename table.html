@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>iview example</title>
+    <link rel="stylesheet" type="text/css" href="./styles/iview.css">
+    <script type="text/javascript" src="./js/vue.js"></script>
+    <script type="text/javascript" src="./js/iview.js"></script>
+</head>
+<body>
+<div id="app">
+    <i-table :columns="columns" :data="datas"></i-table>
+</div>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            columns:[
+                {title: 'name', key:'name'},
+                {title: 'age', key:'age', render: function(h, params){
+                    console.log("这里怎么使用 selectJSON 这个数据");
+
+                    return h('Select', {});
+                }}
+            ],
+            datas: [
+                {name: "张大", age: 13}
+            ],
+            selectJSON: [
+                {lable: "1", value:"1"},
+                {lable: "2", value:"2"},
+                {lable: "3", value:"3"},
+            ]
+        },
+        methods: {
+            
+        }
+    })
+  </script>
+</body>
+</html>
