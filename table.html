@@ -15,14 +15,7 @@
     var vm = new Vue({
         el: '#app',
         data: {
-            columns:[
-                {title: 'name', key:'name'},
-                {title: 'age', key:'age', render: function(h, params){
-                    console.log("这里怎么使用 selectJSON 这个数据");
-
-                    return h('Select', {});
-                }}
-            ],
+            columns:[],
             datas: [
                 {name: "张大", age: 13}
             ],
@@ -33,7 +26,23 @@
             ]
         },
         methods: {
-            
+        },
+        created: function(){
+            console.log(this);
+            var that = this;
+            this.$data.columns = [
+                {title: 'name', key:'name'},
+                {title: 'age', key:'age', render: function(h, params){
+                    console.log("----------------------------------------");
+                    console.log("这里怎么使用 selectJSON 这个数据");
+                    console.log(this);
+                    console.log(that);
+
+                    return h('Select', {}, that.$data.selectJSON.map(function(item){
+                        return h('Option', {props:{value: item.value}}, item.label);
+                    }));
+                }}
+            ];
         }
     })
   </script>
