@@ -9,7 +9,8 @@
 </head>
 <body>
 <div id="app">
-    <i-button type="primary" @click="openModal">click</i-button>
+    <i-button type="primary" @click="openModal1">click1</i-button>
+    <i-button type="primary" @click="openModal2">click2</i-button>
     
 </div>
 <script>
@@ -21,8 +22,11 @@
             ]
         },
         methods: {
-            openModal: function(){
-                // Vue.prototype.$Notice.success({title:'test'});
+            openModal1: function(){
+                Vue.prototype.$Notice.success({title:'test'});
+
+            },
+            openModal2: function(){
                 Vue.prototype.$Modal.confirm({title:'test'});
 
             }
